@@ -8,13 +8,17 @@ jobs:
     name: Deploying to surge
     steps:
       - uses: actions/checkout@v2
-      - name: Install React.js
+      - name: Install Node.js
         uses: actions/setup-node@v2-beta
         with:
           node-version: 12
+      - name: Install react
+        run: npx create-react-app react-base-app
       - name: Install Surge
         run: npm install -g surge
       - name: Run surge
         run: surge ./ bootcamp_setup_umair.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+   
+
 
           
